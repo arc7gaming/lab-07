@@ -16,7 +16,7 @@ class DriversScreenTest {
     val composeTestRule = createAndroidComposeRule<MainActivity>()
 
     @Test
-    fun navigate_to_drivers_add_driver_return_and_return_home() {
+    fun navigate_to_drivers_add_driver_clear_and_return_home() {
         composeTestRule
             .onNodeWithTag("driverButton")
             .performClick()
@@ -32,6 +32,18 @@ class DriversScreenTest {
         composeTestRule
             .onNodeWithText("Lewis Hamilton")
             .assertExists()
+
+        composeTestRule
+            .onNodeWithTag("nameInput")
+            .performTextInput("Max Verstappen")
+
+        composeTestRule
+            .onNodeWithTag("clearButton")
+            .performClick()
+
+        composeTestRule
+            .onNodeWithTag("driver")
+            .assertDoesNotExist()
 
         composeTestRule
             .onNodeWithTag("backButton")

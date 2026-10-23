@@ -86,8 +86,8 @@ fun DriversScreen(navController: NavController) {
         LazyColumn {
             items(drivers) { driver ->
                 Spacer(modifier = Modifier.height(12.dp))
-
                 Text(
+                    modifier = Modifier.testTag("driver"),
                     text = driver,
                     fontSize = 24.sp
                 )
@@ -95,5 +95,14 @@ fun DriversScreen(navController: NavController) {
         }
 
         Spacer(modifier = Modifier.height(16.dp))
+
+        Button(
+            onClick = {
+                drivers.clear()
+            },
+            modifier = Modifier.testTag("clearButton")
+        ) {
+            Text("Clear")
+        }
     }
 }
